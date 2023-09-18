@@ -1,0 +1,5 @@
+const NON_EXISTING_CAMERA = 'NON_EXISTING_CAMERA';
+
+module.exports = {
+  NON_EXISTING_CAMERA
+}

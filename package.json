@@ -1,0 +1,27 @@
+{
+  "name": "easypaypark-cameras",
+  "version": "1.0.0",
+  "description": "Easy Pay Park cameras",
+  "main": "server.js",
+  "author": "sicma795",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bcrypt": "5.1.1",
+    "body-parser": "1.20.2",
+    "body-parser-xml": "2.0.5",
+    "cors": "2.8.5",
+    "express": "4.18.2",
+    "express-validator": "7.0.1",
+    "helmet": "7.0.0",
+    "jsonwebtoken": "9.0.2",
+    "moment": "2.29.4",
+    "morgan": "1.10.0",
+    "morgan-body": "2.6.9",
+    "mysql2": "3.6.1",
+    "passport": "0.6.0",
+    "passport-jwt": "4.0.1",
+    "sequelize": "6.33.0",
+    "socket.io": "4.7.2"
+  }
+}
