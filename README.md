@@ -181,3 +181,10 @@ Nombre de la base de datos.
 
 ## Script de reinicio del proceso
 En caso de que el proceso requiera ser reiniciado (Se desconecto el Arduino, ocurre algún problema), bastará con ejecutar el script `restart.bat` desde cualquier terminal.
+
+### Agregar cámaras
+Desde el dashboard de administración es posible agregar nuevas cámaras para sincronizar los eventos de detección de autos con el programa.
+
+El proceso es tan sencillo como ir al apartado de cámaras, crear una nueva y asignarle un nombre y un tipo (Entrada o Salida), una vez creada esta cámara sólo faltará configurar el URL de eventos desde el software de Hikvision de la manera `http://<ip del servidor>/camaras/<nombre de la cámara>`.
+
+Por ejemplo, si estamos en la ip 192.168.0.100 y la cámara se llama entrada_1, el URL sería `http://192.168.0.100/camaras/entrada_1`.
