@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const { XMLParser } = require("fast-xml-parser");
 const {
   createRecord,
 } = require('../controllers/recordsController');
@@ -13,15 +14,12 @@ router.post('/:name', (req, res) => {
 
   req.on('data', chunk => rawData += chunk)
   .on('end', () => {
-    const data = rawData.toString();
+    const data = rawData.toString().match(/<EventNotificationAlert(.|\n)*EventNotificationAlert>/)[0];
+    const xml = new XMLParser().parse(data);
 
-    console.log('DATA', data);
-
-    res.status(200).send('DATA: ' + data);
-
-    // createRecord(data, name)
-    // .then(record => res.status(201).send({ record }))
-    // .catch(err => errorHandler(res, err));
+    createRecord(xml.EventNotificationAlert, name)
+    .then(record => res.status(201).send({ record }))
+    .catch(err => errorHandler(res, err));
   })
   .on('error', err => errorHandler(res, err));
 });

@@ -16,8 +16,6 @@ app.use(helmet({
 app.use(logger('tiny'));
 bodyLogger(app);
 
-require('body-parser-xml')(bodyParser);
-
 const camaras = require('./routes/camaras');
 app.use('/camaras', camaras)
 
