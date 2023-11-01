@@ -14,7 +14,7 @@ router.post('/:name', (req, res) => {
 
   req.on('data', chunk => rawData += chunk)
   .on('end', () => {
-    const data = rawData.toString().match(/<EventNotificationAlert(.|\n)*EventNotificationAlert>/)[0];
+    const data = rawData.toString().slice(0,10000).match(/<EventNotificationAlert(.|\r\n|\r|\n)*EventNotificationAlert>/)?.[0];
     const xml = new XMLParser().parse(data);
 
     createRecord(xml.EventNotificationAlert, name)
