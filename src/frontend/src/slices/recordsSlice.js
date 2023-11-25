@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   current: {},
   list: [],
+  today: [],
 }
 
 const recordsSlice = createSlice({
@@ -10,10 +11,12 @@ const recordsSlice = createSlice({
   initialState,
   reducers: {
     setRecordsList: (state, { payload }) => ({ ...state, list: [...payload.records] }),
+    setRecordsToday: (state, { payload }) => ({ ...state, today: [...payload.records] }),
+    setNewRecordToday: (state, { payload }) => ({ ...state, today: [state.today, payload.record] }),
     setCurrentRecord: (state, { payload }) => ({ ...state, current: { ...payload.record } }),
-    resetRecordsState: () => ({ list: [], current: { } })
+    resetRecordsState: state => ({ list: [], current: { }, today: state.today })
   }
 });
 
-export const { setRecordsList, setCurrentRecord, resetRecordsState } = recordsSlice.actions;
+export const { setRecordsList, setRecordsToday, setNewRecordToday, setCurrentRecord, resetRecordsState } = recordsSlice.actions;
 export default recordsSlice.reducer;

@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Button } from '@mui/material';
-import { AccountCircle, CompareArrows, Videocam } from '@mui/icons-material';
+import { AccountCircle, CompareArrows, History, Videocam } from '@mui/icons-material';
 
 import { logout } from '../actions/authActions';
 
 const items = [
   { text: 'Registros', icon: <CompareArrows />, path: '/dashboard/registros', protected: false },
+  { text: 'Historial', icon: <History />, path: '/dashboard/historial', protected: false },
   { text: 'Cámaras', icon: <Videocam />, path: '/dashboard/camaras', protected: false },
   { text: 'Usuarios', icon: <AccountCircle />, path: '/dashboard/usuarios', protected: true },
 ];

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Records from './pages/Dashboard/Records/Records';
+import History from './pages/Dashboard/History/History';
 import Cameras from './pages/Dashboard/Cameras/Cameras';
 import CameraDetails from './pages/Dashboard/Cameras/CameraDetails/CameraDetails';
 import Users from './pages/Dashboard/Users/Users';
@@ -18,6 +19,7 @@ const Router = () => {
         <Route path="/dashboard/*" element={token ? <Dashboard /> : <Navigate to="/login" />}>
           <Route index element={<Navigate to="registros" />} />
           <Route path="registros" element={<Records />} />
+          <Route path="historial" element={<History />} />
           <Route path="camaras" element={<Cameras />} />
           <Route path="camaras/:id" element={<CameraDetails />} />
           <Route path="usuarios" element={<Users />} />

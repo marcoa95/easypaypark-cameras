@@ -3,8 +3,8 @@ const { Op } = require('sequelize');
 
 const generateRecordsQuery = query => {
   const where = {};
-  const offset = Number(((query.page - 1) || 0) * query.results);
-  const limit = Number(query.results);
+  const limit = Number(query.results ?? 999999);
+  const offset = Number((((query.page ?? 1) - 1)) * limit);
 
   query.plate ? where.plate = query.plate : null;
   query.model ? where.model = { [Op.like]: `%${query.model}%` } : null;

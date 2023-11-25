@@ -9,6 +9,7 @@ import AppDrawer from '../../components/AppDrawer';
 import { getMe } from '../../actions/authActions';
 import { setCount } from '../../slices/countSlice';
 import EditDialog from '../../components/EditDialog';
+import { setNewRecordToday, setRecordsToday } from '../../slices/recordsSlice';
 
 const { VITE_TITLE, VITE_WS_BASE_URL } = import.meta.env;
 
@@ -32,7 +33,15 @@ const Dashboard = () => {
     
     socket.on('connect', () => socket.emit('join', 'count'));
 
-    socket.on('data', data => { dispatch(setCount({ count: data })) });
+    socket.on('data', data => {
+      dispatch(setRecordsToday(data));
+      dispatch(setCount(data));
+    });
+
+    socket.on('new', payload => {
+      console.log(payload)
+      dispatch(setNewRecordToday(payload));
+    });
 
     return () => socket.close();
   }, []);
