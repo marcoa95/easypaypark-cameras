@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Paper, Collapse, Typography, Box, Grid, TextField, Button } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { Paper, Collapse, Typography, Box, Grid, TextField, Button, MenuItem } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const styles = {
@@ -32,6 +33,8 @@ const RecordsFilter = props => {
 
   const toggleOpen = () => setOpen(!open);
 
+  const cameras = useSelector(state => state.cameras.list);
+
   return (
     <Paper elevation={3} sx={styles.paper}>
       <Box sx={styles.header} onClick={toggleOpen}>
@@ -46,8 +49,24 @@ const RecordsFilter = props => {
           <Grid item xs={6} sx={styles.inputWrapper}>
             <TextField label="Modelo" name="model" value={props.model} onChange={props.onChange} />
           </Grid>
-          <Grid item xs={12} sx={styles.inputWrapper}>
-            <TextField label="Fecha" name="date" value={props.date} type="date" onChange={props.onChange} InputLabelProps={{ shrink: true }} />
+          <Grid item xs={6} sx={styles.inputWrapper}>
+            <TextField select label="Cámara" name="camera" value={props.camera} onChange={props.onChange}>
+              <MenuItem value="">Cualquiera</MenuItem>
+              {cameras.map(camera => <MenuItem key={camera.id} value={camera.id}>{camera.name}</MenuItem>)}
+            </TextField>
+          </Grid>
+          <Grid item xs={6} sx={styles.inputWrapper}>
+            <TextField select label="Tipo" name="type" value={props.type} onChange={props.onChange}>
+              <MenuItem value="">Cualquiera</MenuItem>
+              <MenuItem value="Entrada">Entrada</MenuItem>
+              <MenuItem value="Salida">Salida</MenuItem>
+            </TextField>
+          </Grid>
+          <Grid item xs={6} sx={styles.inputWrapper}>
+            <TextField label="Fecha inicial" name="start" value={props.start} type="date" onChange={props.onChange} InputLabelProps={{ shrink: true }} />
+          </Grid>
+          <Grid item xs={6} sx={styles.inputWrapper}>
+            <TextField label="Fecha final" name="end" value={props.end} type="date" onChange={props.onChange} InputLabelProps={{ shrink: true }} />
           </Grid>
           <Grid item xs={12} sx={styles.actions}>
             <Button type="submit">Buscar</Button>

@@ -9,6 +9,7 @@ const generateRecordsQuery = query => {
   query.plate ? where.plate = query.plate : null;
   query.model ? where.model = { [Op.like]: `%${query.model}%` } : null;
   query.camera ? where.cameraId = query.camera : null;
+  query.type ? where['$camera.type$'] = query.type : null;
 
   const start = new Date(query.start ?? null).toISOString().slice(0, 10);
   const end = query.end ? new Date(query.end).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10);

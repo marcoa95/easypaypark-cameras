@@ -79,7 +79,7 @@ const generateRecordsPdf = query => new Promise(async (resolve, reject) => {
           </div>
         </html>
       `,
-      margin: { bottom: '100px' },
+      margin: { top: '10px', bottom: '100px' },
     });
    
     resolve(pdf);

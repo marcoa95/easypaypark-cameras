@@ -39,7 +39,6 @@ const Dashboard = () => {
     });
 
     socket.on('new', payload => {
-      console.log(payload)
       dispatch(setNewRecordToday(payload));
     });
 
