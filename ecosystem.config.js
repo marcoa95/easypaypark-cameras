@@ -15,6 +15,9 @@ module.exports = {
       DB_USER: 'connection',
       DB_PASSWORD: 'connection',
       DB_NAME: 'parkinglot_cameras',
+      LOGO_FILENAME: 'logo.png',
+      PARKING_NAME: 'Estacionamiento',
+      REAL_TIME_RESULTS: 500,
     },
     env_production: {
       NODE_ENV: 'production',

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte</title>
+    <style>
+      html {
+        -webkit-print-color-adjust: exact;
+        font-size: 16px;
+        font-family: sans-serif;
+      }
+
+      header {
+        display: flex;
+      }
+
+      .header-title {
+        flex: 1;
+        color: white;
+        background-color: #103856;
+        padding-left: 1rem;
+      }
+
+      .logo {
+        width: 150px;
+        background-image: url("http://127.0.0.1:{{port}}/{{logo}}");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding: 1rem;
+      }
+
+      .subheader {
+        color: white;
+        background-color: grey;
+        padding: 0.2rem 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      table {
+        font-size: 1.2rem;
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table td {
+        padding: 0.2rem 0.5rem;
+      }
+
+      thead {
+        font-weight: bold;
+        color: white;
+        background-color: #103856;
+      }
+
+      tfoot {
+        color: white;
+        background-color: #103856;
+      }
+
+      tfoot td {
+        padding: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-title">
+        <h1>{{title}}</h1>
+      </div>
+      <div class="logo"></div>
+    </header>
+    <div class="subheader">
+      <h2>
+        Reporte desde
+        {{#if start}}
+          <span> {{formatShortDate start}} hasta</span>
+        {{else}}
+          <span> siempre hasta</span>
+        {{/if}}
+        {{#if end}}
+          <span> {{formatShortDate end}}.</span>
+        {{else}}
+          <span> hoy.</span>
+        {{/if}}
+      </h2>
+      <h2>{{name}}</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <td>Placa</td>
+          <td>Modelo</td>
+          <td>Cámara</td>
+          <td>Tipo</td>
+          <td>Fecha</td>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each reports}}
+          <tr>
+            <td>{{this.plate}}</td>
+            <td>{{this.model}}</td>
+            <td>{{this.camera.name}}</td>
+            <td>{{this.camera.type}}</td>
+            <td>{{formatDate this.createdAt}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </body>
+</html>

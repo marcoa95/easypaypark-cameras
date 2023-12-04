@@ -176,8 +176,14 @@ Usuario de acceso a la base de datos.
 ### DB_PASSWORD
 Contraseña del usuario de acceso a la base de datos.
 
-### DB_NAME
-Nombre de la base de datos.
+### LOGO_FILENAME
+Nombre y extensión del archivo tipo imagen para el logo que aparecerá en el PDF, este deberá estar dentro de la carpeta `public` en la raiz del proyecto.
+
+### PARKING_NAME
+Nombre del estacionamiento que aparecerá en el PDF.
+
+### REAL_TIME_RESULTS
+Cantidad máxima de resultados a mostrar en tiempo real. (Recuerde que un mayor número representa un mayor consumo de recursos así como de tiempo de procesamiento)
 
 ## Script de reinicio del proceso
 En caso de que el proceso requiera ser reiniciado (Se desconecto el Arduino, ocurre algún problema), bastará con ejecutar el script `restart.bat` desde cualquier terminal.

@@ -25,6 +25,7 @@ const api = require('./routes/api');
 
 app.use('/api', api);
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
+app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 app.get('*', (_, res) => res.redirect('/'));
 
 module.exports = app;
